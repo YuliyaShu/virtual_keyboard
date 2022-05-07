@@ -133,16 +133,16 @@ const ObjKeyboard = {
     '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace',
     'tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'del',
     'capsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'enter',
-    'shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '&#8593', 'shift',
-    'ctrl', 'win', 'alt', 'space', 'alt', 'ctrl', '&#8592', '&#8595', '&#8594',
+    'shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '&#8593', 'shift.',
+    'ctrl', 'win', 'alt', 'space', 'alt.', 'ctrl.', '&#8592', '&#8595', '&#8594',
   ],
 
   keyboardPalletteWithN: [
     '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace', '',
     'tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'del', '',
     'capsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'enter', '',
-    'shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '&#8593', 'shift', '',
-    'ctrl', 'win', 'alt', 'space', 'alt', 'ctrl', '&#8592', '&#8595', '&#8594',
+    'shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '&#8593', 'shift.', '',
+    'ctrl', 'win', 'alt', 'space', 'alt.', 'ctrl.', '&#8592', '&#8595', '&#8594',
   ],
 
   keyboardReal: [
@@ -192,7 +192,6 @@ const ObjKeyboard = {
   },
 
   create() {
-    console.log('created eng');
     keyboardElement.innerHTML = '';
     for (let i = 0; i < this.keyboardPallette.length; i += 1) {
       const unit = this.keyboardPallette[i];
@@ -203,7 +202,6 @@ const ObjKeyboard = {
     keyboardElement.children[29].after(document.createElement('br'));
     keyboardElement.children[43].after(document.createElement('br'));
     keyboardElement.children[57].after(document.createElement('br'));
-    console.log(keyboardElement);
 
     keyboardElement.children[13].classList.add('button-wider');
     keyboardElement.children[31].classList.add('button-wider');
@@ -259,16 +257,14 @@ const ObjKeyboard = {
 
   textCursorPosition(elem) {
     elem.focus();
-    console.log(elem.selectionStart);
     if (!elem.selectionStart) return elem.selectionStart;
     if (window.getSelection) {
-      return 'kkkkkkkkk';
+      return 'test';
     }
     return 0;
   },
 
   clickToTextareaDownReal(eDownReal) {
-    console.log(eDownReal);
     textareaN.focus();
     const ind = ObjKeyboard.keyboardReal.indexOf(eDownReal.code);
     if (keyboardElement.children[ind]) keyboardElement.children[ind].classList.toggle('capsLock-on');
@@ -279,7 +275,6 @@ const ObjKeyboard = {
   },
 
   clickToTextareaDownVirtual(eDownVirtual) {
-    console.log(eDownVirtual);
     const text = eDownVirtual.path[0].innerText;
     if (text.length === 1) textareaN.value += text;
     switch (text) {
@@ -290,9 +285,6 @@ const ObjKeyboard = {
         textareaN.value += '\n';
         break;
       case 'del':
-      // !!!!!!!!! correct
-        // console.log(ObjKeyboard.textCursorPosition(textareaN));
-        // textareaN.value = textareaN.value.substring(0, textareaN.value.length - 1);
         break;
       case 'tab':
         textareaN.value = `\t${textareaN.value}`;
@@ -362,7 +354,6 @@ const ObjKeyboard = {
   },
 
   clickToTextareaUpVirtual(eUpVirtual) {
-    console.log(eUpVirtual);
     const text = eUpVirtual.path[0].innerText;
     let indV;
     if (text.includes('\n')) {
@@ -441,7 +432,7 @@ const ObjKeyboardRu = {
     10: ')',
     11: '_',
     12: '+',
-    28: '/',
+    28: '|',
     55: ',',
   },
 
@@ -456,7 +447,6 @@ const ObjKeyboardRu = {
   },
 
   create() {
-    console.log('created rus');
     keyboardElement.innerHTML = '';
     for (let i = 0; i < this.keyboardPalletteRu.length; i += 1) {
       const unit = this.keyboardPalletteRu[i];
@@ -467,7 +457,6 @@ const ObjKeyboardRu = {
     keyboardElement.children[29].after(document.createElement('br'));
     keyboardElement.children[43].after(document.createElement('br'));
     keyboardElement.children[57].after(document.createElement('br'));
-    console.log(keyboardElement);
 
     keyboardElement.children[13].classList.add('button-wider');
     keyboardElement.children[31].classList.add('button-wider');
@@ -486,7 +475,7 @@ const ObjKeyboardRu = {
 
     const map = new Map(Object.entries({
       '|': 28,
-      '?': 55,
+      ',': 55,
     }));
     map.forEach((value, key) => {
       const upTextButton = document.createElement('p');
@@ -515,18 +504,16 @@ const ObjKeyboardRu = {
     }
   },
 
-  // correct!!!!!
   textCursorPosition(elem) {
     elem.focus();
     if (!elem.selectionStart) return elem.selectionStart;
     if (window.getSelection) {
-      return 'kkkkkkkkk';
+      return 'text';
     }
     return 0;
   },
 
   clickToTextareaDownReal(eDownReal) {
-    console.log(eDownReal);
     textareaN.focus();
     const ind = ObjKeyboardRu.keyboardReal.indexOf(eDownReal.code);
     if (keyboardElement.children[ind]) keyboardElement.children[ind].classList.toggle('capsLock-on');
@@ -537,7 +524,6 @@ const ObjKeyboardRu = {
   },
 
   clickToTextareaDownVirtual(eDownVirtual) {
-    console.log(eDownVirtual);
     const text = eDownVirtual.path[0].innerText;
     if (text.length === 1) textareaN.value += text;
     switch (text) {
@@ -548,9 +534,6 @@ const ObjKeyboardRu = {
         textareaN.value += '\n';
         break;
       case 'del':
-      // !!!!!!!!! correct
-        // console.log(ObjKeyboard.textCursorPosition(textareaN));
-        // textareaN.value = textareaN.value.substring(0, textareaN.value.length - 1);
         break;
       case 'tab':
         textareaN.value = `\t${textareaN.value}`;

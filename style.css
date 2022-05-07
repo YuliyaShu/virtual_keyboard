@@ -14,8 +14,6 @@ html {
 	overflow-x: hidden;
 }
 
-
-
 *, *::before, *::after {
     box-sizing: inherit;
 }
@@ -50,6 +48,11 @@ p, h1, h2 {
 	max-width: 1230px;
 	margin: 0 auto;
 	padding: 0 15px;
+}
+
+h4 {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
 }
 
 .container-main {
@@ -162,7 +165,6 @@ textarea:focus-visible {
     text-align: center;
 }
 
-
 .button {
     display: inline-flex;
     align-items: center;
@@ -179,9 +181,6 @@ textarea:focus-visible {
     font-size: 1rem;
     position: relative;
 }
-
-
-
 
 .button-wider {
     min-width: fit-content;
@@ -233,10 +232,6 @@ textarea:focus-visible {
 
 
 
-
-
-
-
 /* FOOTER */
 .nav-list-footer {
 	display: flex;
@@ -277,8 +272,6 @@ textarea:focus-visible {
     margin-left: 5px;
 	opacity: 40%;
 }
-
-
 
 @media (max-width: 1155px) {
     .keyboard {
