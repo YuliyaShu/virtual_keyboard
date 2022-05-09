@@ -265,10 +265,8 @@ const ObjKeyboard = {
   },
 
   clickToTextareaDownReal(eDownReal) {
-  console.log(eDownReal.code)
     textareaN.focus();
     const ind = ObjKeyboard.keyboardReal.indexOf(eDownReal.code);
-    console.log(ind)
     if (keyboardElement.children[ind]) keyboardElement.children[ind].classList.toggle('capsLock-on');
     if (ind === 15) {
       eDownReal.preventDefault();
